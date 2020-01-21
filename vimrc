@@ -17,7 +17,8 @@ filetype off                  " required
  Plugin 'vimwiki/vimwiki'
  Plugin 'tpope/vim-surround'
  Plugin 'jiangmiao/auto-pairs'
- Plugin 'mattn/calendar-vim'
+ Plugin 'davidhalter/jedi-vim' 
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "All of your Plugins must be added before the following line
@@ -69,13 +70,16 @@ syntax on
 
 ""VimWiki"
 let wiki = { }
+let wiki.path = "/Users/m/Library/Mobile Documents/com~apple~CloudDocs/vimwiki"
 let wiki.template_default = 'default'
 let wiki.template_ext = '.html'
-let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp'}
+let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'html': 'html'}
 let wiki.automatic_nested_syntaxes = 1
 let wiki.auto_tags = 1
 let wiki.auto_diary_index = 1
+let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]
+"set omnifunc=syntaxcomplete#Complete
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -102,13 +106,19 @@ set number
 "If a line exceeds 80 mark it in red
 "Highlight 80th column
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%100v.\+/
 "" Highlight market at 80th column
-if exists('+colorcolumn')
-  set colorcolumn=80
-else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-endif
+"if exists('+colorcolumn')
+"  set colorcolumn=100
+"else
+"  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+"endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"Get rid of annoying color artificats command.
+"I use this when coppying tex code from the web
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <F12> :%s/\\color.*\}/<CR>
