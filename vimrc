@@ -50,5 +50,6 @@ let wiki.auto_diary_index = 1
 let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]
 
+nnoremap html :VimwikiAll2HTML<CR>
 
 " ====================== End of Configuration ========================
