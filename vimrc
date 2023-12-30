@@ -1,14 +1,22 @@
 " ====================== Vundle Plugin Manager =======================
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+
+" Check if the OS is Windows
+if has('win32') || has('win64')
+    set rtp+=~/vimfiles/bundle/Vundle.vim
+    call vundle#begin('~/vimfiles/bundle')
+else
+    " Assume macOS or other Unix-like OS
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+endif
+
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vimwiki/vimwiki'
 Plugin 'tpope/vim-surround'
 Plugin 'jiangmiao/auto-pairs'
-Plugin 'davidhalter/jedi-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -31,7 +39,8 @@ let g:AutoPairs={'(':')', '[':']', '{':'}', "'":"'", '"':'"', '`':'`', '```':'``
 
 " VimWiki
 let wiki = {}
-let wiki.path = '~/Documents/vimwiki'
+let wiki.path = 'C:\Users\metta\Documents\GitHub\mdm508.github.io\vimwiki'
+let wiki.path_html = 'C:/Users/metta/Documents/GitHub/mdm508.github.io/content/wiki'
 let wiki.template_default = 'default'
 let wiki.template_ext = '.html'
 let wiki.nested_syntaxes = {'python': 'python', 'c++': 'cpp', 'html': 'html'}
@@ -40,5 +49,6 @@ let wiki.auto_tags = 1
 let wiki.auto_diary_index = 1
 let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]
+
 
 " ====================== End of Configuration ========================
