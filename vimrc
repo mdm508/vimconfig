@@ -6,6 +6,8 @@ filetype off
 if has('win32') || has('win64')
     set rtp+=~/vimfiles/bundle/Vundle.vim
     call vundle#begin('~/vimfiles/bundle')
+    " Specfic to gVim
+    set guifont=Consolas:h16
 else
     " Assume macOS or other Unix-like OS
     set rtp+=~/.vim/bundle/Vundle.vim
@@ -29,7 +31,9 @@ set lazyredraw
 set synmaxcol=200
 set backup
 set undofile
-set backupdir=~/.vim/backup//
+set textwidth=80 "gq[movement] to reformat
+set colorcolumn=80
+" set backupdir=~/.vim/backup//
 set undodir=~/.vim/undo//
 nnoremap <leader>e :Explore<CR>
 
@@ -50,6 +54,20 @@ let wiki.auto_diary_index = 1
 let wiki.auto_toc = 1
 let g:vimwiki_list = [wiki]
 
+"" Remapped commands
 nnoremap html :VimwikiAll2HTML<CR>
+command! Diary VimwikiDiaryIndex
+augroup vimwikigroup
+    autocmd!
+    " automatically update links on read diary
+    autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
+augroup end
+"" Commit when you quit
+
+
+"" Pushes anyttime you edit vim
+command! Wq execute 'cd C:/Users/metta/Documents/GitHub/mdm508.github.io' | w | !git add % && git commit -m "Commit via Vim" && git push
+autocmd BufWritePost * Wq
+
 
 " ====================== End of Configuration ========================
