@@ -52,6 +52,8 @@ let wiki.automatic_nested_syntaxes = 1
 let wiki.auto_tags = 1
 let wiki.auto_diary_index = 1
 let wiki.auto_toc = 1
+let wiki.diary_frequency = 'monthly'
+let wiki.diary_caption_level = 1 "level 1 captions
 let g:vimwiki_list = [wiki]
 
 "" Remapped commands
@@ -62,12 +64,12 @@ augroup vimwikigroup
     " automatically update links on read diary
     autocmd BufRead,BufNewFile diary.wiki VimwikiDiaryGenerateLinks
 augroup end
-"" Commit when you quit
 
 
-"" Pushes anyttime you edit vim
-command! Wq execute 'cd C:/Users/metta/Documents/GitHub/mdm508.github.io' | w | !git add % && git commit -m "Commit via Vim" && git push
-autocmd BufWritePost * Wq
+"" Builds HTML, pushes to git
+command! Push execute 'VimwikiAll2HTML' | execute 'cd C:/Users/metta/Documents/GitHub/mdm508.github.io' | w | execute '!git add -A && git commit -m "Commit via Vim" && git push'
+
+
 
 
 " ====================== End of Configuration ========================
