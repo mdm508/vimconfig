@@ -36,6 +36,10 @@ set colorcolumn=80
 " set backupdir=~/.vim/backup//
 set undodir=~/.vim/undo//
 nnoremap <leader>e :Explore<CR>
+set backspace=indent,eol,start "enable backspace
+set spell
+set spelllang=en
+
 
 " ====================== Plugin Configuration ========================
 " AutoPairs
