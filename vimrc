@@ -56,7 +56,7 @@ let wiki.automatic_nested_syntaxes = 1
 let wiki.auto_tags = 1
 let wiki.auto_diary_index = 1
 let wiki.auto_toc = 1
-let wiki.diary_frequency = 'monthly'
+let wiki.diary_frequency = 'weekly'
 let wiki.diary_caption_level = 1 "level 1 captions
 let g:vimwiki_list = [wiki]
 
